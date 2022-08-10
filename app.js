@@ -22,7 +22,7 @@ function Drink(name, ingredients, image, isCold, isHot, price) {
 Drink.prototype.render = function () {
     // createing h3 for the name of the drink
     let name = document.createElement('h3');// <h3> </h3>
-    name.textContent = this.name; // <h3> the name of the drink </h3>
+    name.textContent = `${this.name}`; // <h3> the name of the drink </h3>
     sectionEl.appendChild(name) // I can see the name inside the section
 
     // create the images :
@@ -50,11 +50,11 @@ Drink.prototype.renderTable = function () {
     tableEl.appendChild(tr);
 
     let nameTd = document.createElement("td");
-    nameTd.textContent = this.name;
+    nameTd.textContent = `${this.name}`;
     tr.appendChild(nameTd);
 
     let priceTd = document.createElement("td");
-    priceTd.textContent = this.price;
+    priceTd.textContent = `${this.price} JD`;
     tr.appendChild(priceTd);
 }
 
@@ -74,7 +74,7 @@ function renderAll(arrayData) {
         // if(arrayData[i].name !== allDrinks[i].name) {
 
             allDrinks[i].render();
-        allDrinks[i].renderTable();
+           allDrinks[i].renderTable();
         
         
     }
@@ -110,6 +110,7 @@ function handleSubmit(event) {
 
     let newDrink = new Drink(drinkName, ingredientsArr, image, cold, hot, price);
     newDrink.render();
+    newDrink.renderTable();
 
     saveData(allDrinks);
     //saveData(newDrink)
