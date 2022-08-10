@@ -65,14 +65,22 @@ let hotChocalte = new Drink("hot chocalte", ["milk", "coffee", "ice", "sugar"], 
 console.log(1);
 
 
-function renderAll() {
+
+
+
+function renderAll(arrayData) {
     for (let i = 0; i < allDrinks.length; i++) {
-        allDrinks[i].render();
+
+        // if(arrayData[i].name !== allDrinks[i].name) {
+
+            allDrinks[i].render();
         allDrinks[i].renderTable();
+        
+        
     }
 }
 
-localStorage.setItem("a", "ahmad");
+//localStorage.setItem("a", "ahmad");
 
 //formEl.addEventListener("submit", handleSubmit);
 
@@ -91,7 +99,7 @@ function handleSubmit(event) {
     // for text input
     let drinkName = event.target.drinkName.value
     let ingredients = event.target.ingredients.value;
-    let image = 0;//event.target.image.value;
+    let image = event.target.image.value;
     let price = event.target.price.value;
     // for checkbox input
     let cold = event.target.cold.checked; // true or false
@@ -100,7 +108,7 @@ function handleSubmit(event) {
 
     // create a new drink
 
-    let newDrink = new Drink(drinkName, 0, image, cold, hot, price);
+    let newDrink = new Drink(drinkName, ingredientsArr, image, cold, hot, price);
     newDrink.render();
 
     saveData(allDrinks);
@@ -131,7 +139,7 @@ function getData() {
             //renderAll();
         }
         
-        renderAll();
+        renderAll(arrayData);
     }
     
     getData();
